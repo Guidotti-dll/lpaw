@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/assets/img/fav.ico" />
+
+    <title>Atividade 3</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      canvas {
+        border: 3px solid black;
+      }
+    </style>
+    <script>
+      window.addEventListener("load", init, false);
+
+      function triEqui(ctx, x, y, l, color = "#000", rev = false) {
+        ctx.beginPath();
+        ctx.lineWidth = l;
+
+        // if (rev) {
+        //   ctx.moveTo(x + l, y); // Move to the first point
+        //   ctx.lineTo(x, y + l); // Draw a line to the second point
+        //   ctx.lineTo(x + l, y + l * 2); // Draw a line to the third point
+        // } else {
+        // ctx.moveTo(x - l / 2, y + l / 2); // Move to the first point
+        // ctx.lineTo(x + l / 2, y + l); // Draw a line to the second point
+        // ctx.lineTo(x - l, y + l); // Draw a line to the third point
+        // }
+
+        const x1 = x - l / 2;
+        const y1 = y + l / 2;
+
+        const x2 = x + l / 2;
+        const y2 = y + l / 2;
+
+        const x3 = x;
+        const y3 = y - l / 2;
+
+        // Start drawing the triangle
+        ctx.beginPath();
+        ctx.moveTo(x1, y1); // Move to the first vertex
+        ctx.lineTo(x2, y2); // Draw a line to the second vertex
+        ctx.lineTo(x3, y3); // Draw a line to the third vertex
+        ctx.closePath();
+
+        // Set the fill color and fill the triangle
+        ctx.fillStyle = color;
+        ctx.fill();
+      }
+
+      function init() {
+        const canvas = document.querySelector("canvas");
+        const ctx = canvas.getContext("2d");
+        triEqui(ctx, 150, 10, 80, "#000");
+        // triEqui(ctx, 200, 10, 80, "#0f0", true);
+      }
+    </script>
+  </head>
+
+  <body>
+    <canvas width="600" height="300">
+      Seu navegador não suporta a tag canvas!
+    </canvas>
+  </body>
+</html>
